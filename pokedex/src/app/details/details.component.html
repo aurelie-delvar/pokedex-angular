@@ -1,0 +1,50 @@
+<section *ngIf="pokemon">
+
+    <div class="card" *ngIf="pokemon.types && pokemon.types.length > 0" [ngClass]="pokemon.types[0]">
+
+        <div class="name">
+            <h2>{{ pokemon.name }}</h2>
+        </div>
+
+        <div class="h-w">
+            <div class="height">
+                <p>Height</p>
+                <p>{{ pokemon.height }}</p>
+            </div>
+            <div class="weight">
+                <p>Weight</p>
+                <p>{{ pokemon.weight }}</p>
+            </div>
+        </div>
+
+        <div class="types">
+            <h2>Types</h2>
+            <ul>
+                <li *ngFor="let type of pokemon.types">
+                    {{ type }}
+                </li>
+            </ul>
+        </div>
+
+        <div class="image">
+            <img src={{pokemon.image}} alt={{pokemon.name}}>
+        </div>
+
+    </div>
+
+    <div class="card" *ngIf="pokemon.types && pokemon.types.length > 0" [ngClass]="pokemon.types[0]">
+
+        <div class="name">
+            <h2>Moves</h2>
+        </div>
+
+        <div class="moves">
+            <ul>
+                <li *ngFor="let move of pokemon.moves">
+                    {{ move }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</section>

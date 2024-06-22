@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pokemon Classic', sans-serif;
+}
+
+@font-face {
+    font-family: 'Pokemon Classic';
+    src: url('/assets/fonts/Pokemon.ttf') format('truetype');
+}
