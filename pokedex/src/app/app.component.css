@@ -1,0 +1,14 @@
+nav {
+    background-color: #D03C52;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+img {
+    width: 15%;
+}

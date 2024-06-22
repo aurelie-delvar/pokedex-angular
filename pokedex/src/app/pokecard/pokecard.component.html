@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="cards">
+        <div class="card">
+            <div class="card__img">
+                <img src={{pokemonType.image}} alt={{pokemonType.name}}>
+            </div>
+            <div class="cart__content">
+                <h4><b>{{pokemonType.name}}</b></h4>
+                <a [routerLink]="['/details', pokemonType.name]">Voir plus</a>
+
+            </div>
+        </div>
+
+    </div>
+</div>

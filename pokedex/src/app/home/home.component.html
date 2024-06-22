@@ -1,0 +1,34 @@
+<section>
+
+    <div class="container">
+            <button (click)="showRandomPokemon()" class="random-button">Random Pokemon</button>
+
+           <form (submit)="$event.preventDefault()">
+                <div class="search-container">
+                    <input 
+                    type="text" 
+                    placeholder="Search by Pokemon name..." 
+                    #filter
+                    (keyup.enter)="filterResults(filter.value)"
+                    />
+                    <button 
+                    type="button" 
+                    (click)="filterResults(filter.value)"
+                    ><img src="assets/pokeball.png" alt="Pokeball" />
+                    </button>
+                </div>
+            </form> 
+    </div>
+    
+    <div class="pokecards">  
+        <ng-container *ngIf="randomPokemon; else pokemonListTemplate">
+            <app-pokecard [pokemonType]="randomPokemon" class="centered-card"></app-pokecard>
+        </ng-container>
+      
+        <ng-template #pokemonListTemplate>
+            <app-pokecard *ngFor="let pokemon of filteredPokemonList" [pokemonType]="pokemon">
+            </app-pokecard>
+        </ng-template>
+    </div>
+
+</section>

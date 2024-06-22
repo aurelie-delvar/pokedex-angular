@@ -1,0 +1,87 @@
+.container {
+    margin: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: row-reverse;
+    justify-content: start;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    
+        img, button {
+            margin-left: -1rem;
+            height: 3.5rem;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            transition: 0.70s;
+            transform-origin: 1rem;
+        }
+
+        button:hover {
+            transform: rotate(90deg);
+        }
+
+        input {
+            font-size: 1rem;
+            background-color: transparent;
+            border-top: 2px solid rgb(208, 60, 82);
+            border-left: 2px solid black;
+            border-bottom: 2px solid rgb(52, 106, 144);
+            border-radius: 20px;
+            padding-right: 3.5rem;
+            padding-left: 1.5rem;
+            outline: none;
+            flex: 1;
+            height: 2rem;
+        }
+
+        input::placeholder {
+            color: rgb(52, 106, 144);
+            font-family: system-ui;
+        }
+}
+
+.pokecards {
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+}
+
+.centered-card {
+    grid-column: span 3;
+    justify-self: center;
+    width: 50%;
+}
+
+.random-button {
+    background-color: rgb(255 204 1 / 70%);
+    color: rgb(23, 40, 94);
+    border: none;
+    border-radius: 20px;
+    font-family: system-ui;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 20px;
+    box-shadow: 7px 7px rgb(50 100 176 / 70%);
+    cursor: pointer;
+    transition: all 0.5s;
+    line-height: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.random-button:hover {
+    box-shadow: 0px 0px rgb(50 100 176 / 70%);
+}
+
+.random-button:active {
+    box-shadow: 0px 0px rgb(50 100 176 / 70%);
+}
+
+@media screen and (max-width: 768px) {
+    .centered-card {
+        width: 50%;
+    }
+}
