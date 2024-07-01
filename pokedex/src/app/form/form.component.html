@@ -1,13 +1,17 @@
 <div class="container">
     <div class="card">
-        <h2>Send us your creation</h2>
+
+        <div class="header">
+            <h2>Send us your creation</h2>
+            <img src="pikachu.ico" alt="Pikachu">
+        </div>
 
         <form [formGroup]="applyForm">
             <label for="poke-name">Pokemon name</label>
-            <input type="text" id="poke-name" formControlName="pokemonName">
+            <input type="text" id="poke-name" placeholder="Dorcat" formControlName="pokemonName">
 
             <label for="author-name">Author name</label>
-            <input type="text" id="author-name" formControlName="authorName">
+            <input type="text" id="author-name" placeholder="Jane Doe" formControlName="authorName">
 
             <button type="submit">Submit pokemon!</button>
         </form>

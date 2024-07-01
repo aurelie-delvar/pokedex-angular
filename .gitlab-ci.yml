@@ -1,0 +1,30 @@
+name: Deploy to Surge
+
+on: 
+  push:
+    branches: 
+      - main
+
+jobs:
+  buildNdeploy:
+    environment: production
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: pokedex
+    steps:
+      # fetch du code
+      - name: Checkout
+        uses: actions/checkout@v3
+      # installation des dependances
+      - name: Install Dependencies
+        run: npm install
+      # build
+      - name: Build
+        run: npm run build
+      # deploy to surge
+      - name: Deploy to Surge
+        run: |
+         npm install -g surge
+         surge ./dist --domain ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}

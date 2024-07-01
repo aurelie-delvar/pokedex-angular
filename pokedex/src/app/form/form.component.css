@@ -2,6 +2,20 @@ h2 {
     font-family: system-ui;
     font-size: 2rem;
     text-align: center;
+    color: rgb(23, 40, 94);
+}
+
+.header {
+    position: relative;
+}
+
+img {
+    height: 90px;
+    width: 90px;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    transform: rotate(15deg);
 }
 
 .card {
@@ -23,6 +37,21 @@ form {
 
 label {
     margin: 1rem;
+    color: rgb(23, 40, 94);
+}
+
+input {
+    height: 2rem;
+    width: 60%;
+    border-radius: 40px;
+    border: 2px solid rgb(52, 106, 144);
+}
+
+input::placeholder {
+    font-family: system-ui;
+    font-size: 1rem;
+    padding-left: 0.7rem;
+    color: rgb(23 40 94 / 60%);
 }
 
 button {
