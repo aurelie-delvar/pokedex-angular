@@ -70,6 +70,7 @@
     line-height: 0.8;
     text-transform: uppercase;
     letter-spacing: 3px;
+    text-decoration: none;
 }
 
 .random-button:hover {

@@ -3,11 +3,13 @@ import { PokecardComponent } from '../pokecard/pokecard.component';
 import { PokemonService } from '../pokemon.service';
 import { PokemonType } from '../pokemon-type';
 import { CommonModule } from '@angular/common';
+import { FormComponent } from '../form/form.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, PokecardComponent],
+  imports: [CommonModule, PokecardComponent, FormComponent, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

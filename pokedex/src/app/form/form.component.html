@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="card">
+        <h2>Send us your creation</h2>
+
+        <form [formGroup]="applyForm">
+            <label for="poke-name">Pokemon name</label>
+            <input type="text" id="poke-name" formControlName="pokemonName">
+
+            <label for="author-name">Author name</label>
+            <input type="text" id="author-name" formControlName="authorName">
+
+            <button type="submit">Submit pokemon!</button>
+        </form>
+    </div>
+</div>
