@@ -1,8 +1,8 @@
 <section>
 
     <div class="container">
-            <button (click)="showRandomPokemon()" class="random-button">Random Pokemon</button>
-            <button routerLink="/submit-pokemon" class="random-button">Submit your own pokemon</button>
+            <app-button [className]="'button'" (buttonClick)="showRandomPokemon()" >Random Pokemon</app-button>
+            <app-button [className]="'button'" routerLink="/submit-pokemon" >Submit your own Pokemon</app-button> 
 
            <form (submit)="$event.preventDefault()">
                 <div class="search-container">
@@ -12,11 +12,7 @@
                     #filter
                     (keyup.enter)="filterResults(filter.value)"
                     />
-                    <button 
-                    type="button" 
-                    (click)="filterResults(filter.value)"
-                    ><img src="assets/pokeball.png" alt="Pokeball" />
-                    </button>
+                    <app-button [btnType]="'button'" [className]="'poke-button'" (buttonClick)="filterResults(filter.value)"><img src="assets/pokeball.png" alt="Pokeball" /></app-button>
                 </div>
             </form> 
     </div>

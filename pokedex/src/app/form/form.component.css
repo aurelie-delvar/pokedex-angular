@@ -54,10 +54,6 @@ input::placeholder {
     color: rgb(23 40 94 / 60%);
 }
 
-button {
-    margin: 2rem auto 1rem;
-}
-
 @media (max-width: 600px) {
     .card {
         flex-direction: column;

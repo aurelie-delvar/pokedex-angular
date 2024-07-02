@@ -1,0 +1,53 @@
+button {
+    margin-left: -1rem;
+    height: 3.5rem;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transition: 0.70s;
+    transform-origin: 1rem;
+    font-family: system-ui;
+    border-radius: 40px;    
+    line-height: 0.8;   
+    text-decoration: none;
+    font-size: 13px;
+    border: none;
+}
+
+.poke-button:hover {
+    transform: rotate(90deg);
+}
+
+.button {
+    background-color: rgb(255 204 1 / 70%);
+    color: rgb(23, 40, 94);
+    font-weight: bold;
+    padding: 20px;
+    box-shadow: 7px 7px rgb(50 100 176 / 70%);
+    transition: all 0.5s;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0 0.8rem;
+}
+
+.button:hover {
+    box-shadow: 0px 0px rgb(50 100 176 / 70%);
+}
+
+.button:active {
+    box-shadow: 0px 0px rgb(50 100 176 / 70%);
+}
+
+.form-button {
+    margin: 2rem auto 1rem;
+}
+
+.more-button {
+    display: inline-block;
+    background-color: #346A90;
+    color: white;
+    padding: 0.5rem 1rem;
+    letter-spacing: 2px;
+    margin: 1rem 0 0 0;
+    font-size: 1rem;
+}

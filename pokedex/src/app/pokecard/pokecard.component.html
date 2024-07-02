@@ -6,7 +6,7 @@
             </div>
             <div class="cart__content">
                 <h4><b>{{pokemonType.name}}</b></h4>
-                <a [routerLink]="['/details', pokemonType.name]">Voir plus</a>
+                 <app-button [routerLink]="['/details', pokemonType.name]" [className]="'more-button'">See more</app-button>
 
             </div>
         </div>

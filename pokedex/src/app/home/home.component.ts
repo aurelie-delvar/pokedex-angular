@@ -5,11 +5,12 @@ import { PokemonType } from '../pokemon-type';
 import { CommonModule } from '@angular/common';
 import { FormComponent } from '../form/form.component';
 import { RouterLink } from '@angular/router';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, PokecardComponent, FormComponent, RouterLink],
+  imports: [CommonModule, PokecardComponent, FormComponent, RouterLink, ButtonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
