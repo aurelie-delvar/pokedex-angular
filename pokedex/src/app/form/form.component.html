@@ -10,6 +10,12 @@
             <label for="poke-name">Pokemon name</label>
             <input type="text" id="poke-name" placeholder="Dorcat" formControlName="pokemonName">
 
+            <div *ngIf="applyForm.get('pokemonName')?.invalid && applyForm.get('pokemonName')?.touched">
+                <small *ngIf="applyForm.get('pokemonName')?.errors?.['required']">Pokemon Name is required.</small>
+                <small *ngIf="applyForm.get('pokemonName')?.errors?.['minlength']">Pokemon Name must be at least 3 characters long.</small>
+                <small *ngIf="applyForm.get('pokemonName')?.errors?.['maxlength']">Pokemon Name cannot be more than 20 characters long.</small>
+            </div>
+
             <label for="author-name">Author name</label>
             <input type="text" id="author-name" placeholder="Jane Doe" formControlName="authorName">
 

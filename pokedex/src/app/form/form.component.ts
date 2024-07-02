@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from '../button/button.component';
 import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
@@ -15,8 +15,16 @@ import { throwError } from 'rxjs';
 export class FormComponent {
 
   applyForm = new FormGroup({
-    pokemonName: new FormControl(''),
-    authorName: new FormControl('')
+    pokemonName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(20)
+    ]),
+    authorName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.pattern('^[a-zA-Z ]*$')
+    ])
   });
   file: File | null = null;
   
@@ -33,18 +41,23 @@ export class FormComponent {
   }
 
   onUpload() {
-    if (this.file) {
-      const formData = new FormData();
+    if (this.applyForm.valid) {
+      if (this.file) {
+        const formData = new FormData();
 
-      formData.append("file", this.file, this.file.name);
+        formData.append("file", this.file, this.file.name);
 
-      const upload$ = this.http.post("https://httpbin.org/post", formData);
+        const upload$ = this.http.post("https://httpbin.org/post", formData);
 
-      upload$.subscribe({
-        error: (error: any) => {
-          return throwError(() => error);
-        }
-      })
+        upload$.subscribe({
+          error: (error: any) => {
+            return throwError(() => error);
+          }
+        })
+      } 
+    } else {
+      console.log('Form is invalid');
     }
+
   }
 }

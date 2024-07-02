@@ -1,8 +1,6 @@
 h2 {
-    font-family: system-ui;
     font-size: 2rem;
     text-align: center;
-    color: rgb(23, 40, 94);
     flex-grow: 1;
 }
 
@@ -46,6 +44,8 @@ input:not(#file-upload) {
     width: 60%;
     border-radius: 40px;
     border: 2px solid rgb(52, 106, 144);
+    padding-left: 1rem;
+    font-size: 1rem;
 }
 
 input::placeholder {
@@ -55,20 +55,22 @@ input::placeholder {
     color: rgb(23 40 94 / 60%);
 }
 
-#file-upload {
-    font-family: system-ui;
-    color: rgb(23, 40, 94);
-}
-
 .file-info {
-    font-family: system-ui;
-    color: rgb(23, 40, 94);
     margin-top: 1rem;
     font-size: 1rem;
 }
 
 .file-info > ul {
     list-style-type: none;
+}
+
+small {
+    font-weight: bold;
+}
+
+small, .file-info, #file-upload, h2, input:not(#file-upload) {
+    font-family: system-ui;
+    color: rgb(23, 40, 94);
 }
 
 @media (max-width: 600px) {
