@@ -13,7 +13,22 @@
             <label for="author-name">Author name</label>
             <input type="text" id="author-name" placeholder="Jane Doe" formControlName="authorName">
 
-            <app-button [btnType]="'submit'" [className]="'form-button button'" >Submit Pokemon!</app-button>
+            <!-- File upload -->
+            <label for="file-upload">Upload your creation</label>
+            <input id="file-upload" type="file" class="file-input" (change)="onChange($event)" #fileUpload />
+            
+            <div *ngIf="file">
+                <section class="file-info">
+                    <b>File details:</b>
+                    <ul>
+                        <li><b>Name: </b>{{file.name}}</li>
+                        <li><b>Type: </b>{{file.type}}</li>
+                        <li><b>Size: </b>{{file.size}} bytes</li>
+                    </ul>
+                </section>
+            </div>
+
+            <app-button [btnType]="'submit'" [className]="'form-button button'" (buttonClick)="onUpload()">Submit Pokemon!</app-button>
         </form>
     </div>
 </div>

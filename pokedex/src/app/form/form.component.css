@@ -22,7 +22,8 @@ img {
     margin: 1rem auto;
     padding: 1rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    width: 30%;
+    min-width: 30%;
+    max-width: 70%;
 }
 
 .container {
@@ -40,7 +41,7 @@ label {
     color: rgb(23, 40, 94);
 }
 
-input {
+input:not(#file-upload) {
     height: 2rem;
     width: 60%;
     border-radius: 40px;
@@ -52,6 +53,22 @@ input::placeholder {
     font-size: 1rem;
     padding-left: 0.7rem;
     color: rgb(23 40 94 / 60%);
+}
+
+#file-upload {
+    font-family: system-ui;
+    color: rgb(23, 40, 94);
+}
+
+.file-info {
+    font-family: system-ui;
+    color: rgb(23, 40, 94);
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.file-info > ul {
+    list-style-type: none;
 }
 
 @media (max-width: 600px) {
