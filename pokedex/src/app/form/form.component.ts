@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from '../button/button.component';
 import { HttpClient } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -23,12 +24,12 @@ export class FormComponent {
     authorName: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
-      Validators.pattern('^[a-zA-Z ]*$')
+      Validators.pattern('^[a-zA-ZÀ-ÖØ-öø-ÿ ]*$')
     ])
   });
   file: File | null = null;
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void { }
   
@@ -49,15 +50,19 @@ export class FormComponent {
 
         const upload$ = this.http.post("https://httpbin.org/post", formData);
 
-        upload$.subscribe({
-          error: (error: any) => {
+        upload$.pipe(
+          catchError((error: any) => {
             return throwError(() => error);
+          })
+        ).subscribe({
+          next: () => {
+            this.router.navigate(['/']);
+          },
+          error: (error: any) => {
+            console.error('Upload failed', error);
           }
-        })
-      } 
-    } else {
-      console.log('Form is invalid');
+        });
+      }
     }
-
   }
 }

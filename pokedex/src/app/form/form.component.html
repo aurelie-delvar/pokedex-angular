@@ -19,6 +19,12 @@
             <label for="author-name">Author name</label>
             <input type="text" id="author-name" placeholder="Jane Doe" formControlName="authorName">
 
+            <div *ngIf="applyForm.get('authorName')?.invalid && applyForm.get('authorName')?.touched">
+                <small *ngIf="applyForm.get('authorName')?.errors?.['required']">Author's name is required.</small>
+                <small *ngIf="applyForm.get('authorName')?.errors?.['minlength']">Author's name must be at least 3 characters long.</small>
+                <small *ngIf="applyForm.get('authorName')?.errors?.['pattern']">Author's name must only contains valid characters.</small>
+            </div>
+
             <!-- File upload -->
             <label for="file-upload">Upload your creation</label>
             <input id="file-upload" type="file" class="file-input" (change)="onChange($event)" #fileUpload />
