@@ -5,6 +5,7 @@ import { ButtonComponent } from '../button/button.component';
 import { HttpClient } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-form',
@@ -24,14 +25,29 @@ export class FormComponent {
     authorName: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
-      Validators.pattern('^[a-zA-ZÀ-ÖØ-öø-ÿ ]*$')
+      Validators.pattern("^[a-zA-ZàâéèêëîùçÀÉÈÊ'-\s]+$")
+    ]),
+    fileUpload: new FormControl('', [
+      Validators.required
     ])
   });
   file: File | null = null;
+  errorMessage: string | null = null;
+  secureHtmlContent: SafeHtml | null = null;
   
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private sanitizer: DomSanitizer) { 
+    const pokemonName = this.applyForm.get('pokemonName')?.value;
+    const authorName = this.applyForm.get('authorName')?.value;
+    const file = this.file;
+    const potentiallyUnsafeHtml = `${pokemonName} ${authorName} ${file?.name}`;
+    this.sanitizer.bypassSecurityTrustHtml(potentiallyUnsafeHtml);
+  }
 
   ngOnInit(): void { }
+
+  sanitizeInput(input: string): string {
+    return input.replace(/[^a-zA-Z0-9 ]/g, '');
+  }
   
   onChange(event: any) {
     const file: File = event.target.files[0];
@@ -39,14 +55,31 @@ export class FormComponent {
     if (file) {
       this.file = file;
     }
+
+    const allowedTpes = ['image/png', 'image/jpeg', 'image/jpg'];
+    if(!allowedTpes.includes(file.type)) {
+      this.file = null;
+      this.errorMessage = 'Invalid file type. Please upload a valid image file.';
+      return;
+    }
+
+    this.errorMessage = null;
   }
 
   onUpload() {
     if (this.applyForm.valid) {
+
+      const sanitizedData = {
+        pokemonName: this.sanitizeInput(this.applyForm.value.pokemonName || ''),
+        authorName: this.sanitizeInput(this.applyForm.value.authorName || '')
+      };      
+
       if (this.file) {
         const formData = new FormData();
 
-        formData.append("file", this.file, this.file.name);
+        const sanitizedFileName = this.sanitizeInput(this.file.name);
+
+        formData.append("file", this.file, sanitizedFileName);
 
         const upload$ = this.http.post("https://httpbin.org/post", formData);
 

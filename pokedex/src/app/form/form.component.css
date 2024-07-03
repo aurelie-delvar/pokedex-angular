@@ -36,7 +36,6 @@ form {
 
 label {
     margin: 1rem;
-    color: rgb(23, 40, 94);
 }
 
 input:not(#file-upload) {
@@ -49,7 +48,6 @@ input:not(#file-upload) {
 }
 
 input::placeholder {
-    font-family: system-ui;
     font-size: 1rem;
     padding-left: 0.7rem;
     color: rgb(23 40 94 / 60%);
@@ -60,16 +58,29 @@ input::placeholder {
     font-size: 1rem;
 }
 
+.file-info:not(section) {
+    color: rgb(208, 60, 82);
+    font-weight: bold;
+}
+
 .file-info > ul {
     list-style-type: none;
 }
 
 small {
     font-weight: bold;
+    color: rgb(208, 60, 82);
 }
 
-small, .file-info, #file-upload, h2, input:not(#file-upload) {
+small, .file-info, #file-upload, h2, input:not(#file-upload), input::placeholder {
     font-family: system-ui;
+}
+
+#file-upload,
+h2,
+input:not(#file-upload),
+label,
+.file-info:not(p) {
     color: rgb(23, 40, 94);
 }
 

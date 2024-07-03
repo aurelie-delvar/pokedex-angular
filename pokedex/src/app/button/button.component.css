@@ -14,6 +14,13 @@ button {
     border: none;
 }
 
+button:disabled {
+    cursor: not-allowed;
+    background-color: rgb(255 204 1 / 40%);
+    color: rgb(23 40 94 / 60%);
+    transition: none;
+}
+
 .poke-button:hover {
     transform: rotate(90deg);
 }

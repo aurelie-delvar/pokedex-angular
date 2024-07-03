@@ -8,7 +8,7 @@
 
         <form [formGroup]="applyForm">
             <label for="poke-name">Pokemon name</label>
-            <input type="text" id="poke-name" placeholder="Dorcat" formControlName="pokemonName">
+            <input type="text" id="poke-name" placeholder="Dorcat" formControlName="pokemonName" required>
 
             <div *ngIf="applyForm.get('pokemonName')?.invalid && applyForm.get('pokemonName')?.touched">
                 <small *ngIf="applyForm.get('pokemonName')?.errors?.['required']">Pokemon Name is required.</small>
@@ -17,7 +17,7 @@
             </div>
 
             <label for="author-name">Author name</label>
-            <input type="text" id="author-name" placeholder="Jane Doe" formControlName="authorName">
+            <input type="text" id="author-name" placeholder="Jane Doe" formControlName="authorName" required>
 
             <div *ngIf="applyForm.get('authorName')?.invalid && applyForm.get('authorName')?.touched">
                 <small *ngIf="applyForm.get('authorName')?.errors?.['required']">Author's name is required.</small>
@@ -27,8 +27,9 @@
 
             <!-- File upload -->
             <label for="file-upload">Upload your creation</label>
-            <input id="file-upload" type="file" class="file-input" (change)="onChange($event)" #fileUpload />
-            
+            <input id="file-upload" type="file" class="file-input" accept=".jpg,.png" (change)="onChange($event)" formControlName="fileUpload" #fileUpload required />
+            <p *ngIf="errorMessage" class="file-info">{{ errorMessage }}</p>
+
             <div *ngIf="file">
                 <section class="file-info">
                     <b>File details:</b>
@@ -40,7 +41,7 @@
                 </section>
             </div>
 
-            <app-button [btnType]="'submit'" [className]="'form-button button'" (buttonClick)="onUpload()">Submit Pokemon!</app-button>
+            <app-button [btnType]="'submit'" [className]="'form-button button'" (buttonClick)="onUpload()" [disabled]="applyForm.invalid">Submit Pokemon!</app-button>
         </form>
     </div>
 </div>

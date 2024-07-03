@@ -11,6 +11,7 @@ export class ButtonComponent {
   @Input() btnName: string | undefined;
   @Input() className: string | undefined;
   @Input() btnType: string | undefined;
+  @Input() disabled: boolean | undefined;
 
   @Output() buttonClick = new EventEmitter<void>();
 
