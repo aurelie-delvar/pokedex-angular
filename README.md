@@ -13,14 +13,14 @@ On the "Submit your own Pokemon" page, the user can suggest to add a Pokemon of 
 When "Submit" is clicked, the request is send to https://httpbin.org/ so nothing really happens (as it's an educative frontend project). But the form still has some verifications (length, characters admitted...). As much as it is possible in frontend, I tried to securize the inputs.
 
 This project used:
-    - Angular 18;
-    - HTML/CSS;
-    - Surge to deploy;
+* Angular 18;
+* HTML/CSS;
+* Surge to deploy;
 
 ## Installation
 If you want to clone the project:
-    - copy with https or ssh
-    - git clone on terminal
-    - cd pokedex
-    - ng serve
-    - go to the indicated url (http://localhost:4200/)
+ * copy with https or ssh
+ * git clone on terminal
+ * cd pokedex
+ * ng serve
+ * go to the indicated url (http://localhost:4200/)
